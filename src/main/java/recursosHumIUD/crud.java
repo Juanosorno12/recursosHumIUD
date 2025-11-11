@@ -12,54 +12,6 @@ import javax.swing.table.DefaultTableModel;
  * @author Juan
  */
 public class crud {
-    public void insertarDato(String tipo_identificacion, int numero_identificacion, String nombres, String apellidos){
-        String query = "insert into funcionario (tipo_identificacion, numero_identificacion ,nombres , apellidos)values (?,?,?,?)";
-        try {
-            Connection conn = dbConnection.conectar();
-            PreparedStatement ps = conn.prepareStatement(query);
-            ps.setString(1, tipo_identificacion);
-            ps.setInt(2, numero_identificacion);
-            ps.setString(3, nombres);
-            ps.setString(4, apellidos);
-            
-            ps.executeUpdate();
-            System.out.println("Insertado con exito");
-                    
-        } catch (Exception e) {
-            System.out.println("error en la insersion de datos");
-            e.printStackTrace();
-        }
-
-    }
-    
-//    public void leerDatos(){
-//        String query = "select * from funcionario";
-//        try {
-//            Connection conn = dbConnection.conectar();
-//            PreparedStatement ps = conn.prepareStatement(query);
-//            
-//            ResultSet rs = ps.executeQuery();
-//            Object[] funcionario = new Object[8];
-//            
-//            while (rs.next()) {
-//                String tipo_identificacion=rs.getString("tipo_identificacion");
-//                int numero_identificacion=rs.getInt("numero_identificacion");
-//                String nombres=rs.getString("nombres");
-//                String apellidos=rs.getString("apellidos");
-//                String estado_civil=rs.getString("estado civil");
-//                String sexo=rs.getString("sexo");
-//                String direccion=rs.getString("direccion");
-//                String telefono=rs.getString("telefono");
-//                
-//                
-//                System.out.println("tipo_identificacion" + tipo_identificacion + "numero_identificacion" + numero_identificacion + "nombres" + nombres + "apellidos" + apellidos);
-//                
-//            }
-//        } catch (Exception e) {
-//            System.out.println("error en la lectura de datos");
-//            e.printStackTrace();
-//        }
-//    }
     
 public void leerDatos(JTable tablaFuncionarios) {
         String query = "SELECT * FROM funcionario";
@@ -109,39 +61,6 @@ public void leerDatos(JTable tablaFuncionarios) {
         }
     }
     
-//    public void actualizarDato(int numero_identificacion, String nombres, String apellidos){
-//        String query = "update funcionario set nombres=?, apellidos=? where numero_identificacion=?";
-//        try {
-//            Connection conn = dbConnection.conectar();
-//            PreparedStatement ps = conn.prepareStatement(query);
-//            ps.setInt(3, numero_identificacion);
-//            ps.setString(1, nombres);
-//            ps.setString(2, apellidos);
-//            
-//            ps.executeUpdate();
-//            System.out.println("actualizado con exito");
-//                    
-//        } catch (Exception e) {
-//            System.out.println("error en la actualizacion de datos");
-//            e.printStackTrace();
-//        }
-//    }
-//    
-//        public void eliminarDato(int numero_identificacion){
-//        String query = "delete from funcionario where numero_identificacion=?";
-//        try {
-//            Connection conn = dbConnection.conectar();
-//            PreparedStatement ps = conn.prepareStatement(query);
-//            ps.setInt(1, numero_identificacion);
-//            
-//            ps.executeUpdate();
-//            System.out.println("eliminado con exito");
-//                    
-//        } catch (Exception e) {
-//            System.out.println("error en la eliminacion de datos");
-//            e.printStackTrace();
-//        }
-//    }
 public void insertarFuncionario(String tipo_identificacion, int numero_identificacion, String nombres, String apellidos,
                                     String estado_civil, String sexo, String direccion, String telefono) {
         String query = "INSERT INTO funcionario (tipo_identificacion, numero_identificacion, nombres, apellidos, estado_civil, sexo, direccion, telefono) "
